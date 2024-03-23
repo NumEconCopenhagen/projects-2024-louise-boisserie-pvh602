@@ -1,7 +1,7 @@
-# \[Group name\]
+# \[Louise Boisserie\]
 
 **Group members:**
-- A
+- Louise Boisserie (pvh602)
 - B
 - C
 
