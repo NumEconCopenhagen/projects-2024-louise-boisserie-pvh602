@@ -2,8 +2,6 @@
 
 **Group members:**
 - Louise Boisserie (pvh602)
-- B
-- C
 
 This repository contains  
 1. Inaugural project. 
