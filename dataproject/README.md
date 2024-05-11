@@ -1,6 +1,6 @@
 # Data analysis project
 
-Our project is titled **Gender disparities and daily expenses** and is about the gender differences in terms of amount of daily expenses .
+My project is titled **Gender disparities and daily expenses** and is about the gender differences in terms of amount of daily expenses .
 
 The **results** of the project can be seen from running [dataproject.ipynb](dataproject.ipynb).
 
