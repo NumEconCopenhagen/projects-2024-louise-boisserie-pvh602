@@ -4,7 +4,7 @@ My project is titled **Gender disparities and daily expenses** and is about the 
 
 The **results** of the project can be seen from running [dataproject.ipynb](dataproject.ipynb).
 
-We apply the **following datasets**:
+I apply the **following dataset**:
 
 1. base_menage_anonyme.dta (*research paper*) 
 
