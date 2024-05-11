@@ -1,22 +1,30 @@
 from scipy import optimize
+import numpy as np
 
-def solve_ss(alpha, c):
-    """ Example function. Solve for steady state k. 
+def solve_backwards(beta,W,T,W_now):
+    # Initialize
+    Vstar = np.nan+np.zeros([W+1,T])
+    Cstar = np.nan + np.zeros([W+1,T])
+    Cstar[:,T-1] = np.arange(W+1) 
+    Vstar[:,T-1] = np.sqrt(Cstar[:,T-1])
+    C_backwards = np.empty(T)
 
-    Args:
-        c (float): costs
-        alpha (float): parameter
-
-    Returns:
-        result (RootResults): the solution represented as a RootResults object.
-
-    """ 
+    # Solve
+    # loop over periods
+    for t in range(T-2, -1, -1):  
+        
+        #loop over states
+        for w in range(W+1):
+            c = np.arange(w+1)
+            w_c = w - c
+            V_next = Vstar[w_c,t+1]
+            V_guess = np.sqrt(c)+beta*V_next
+            Vstar[w,t] = np.amax(V_guess)
+            Cstar[w,t] = np.argmax(V_guess)
     
-    # a. Objective function, depends on k (endogenous) and c (exogenous).
-    f = lambda k: k**alpha - c
-    obj = lambda kss: kss - f(kss)
-
-    #. b. call root finder to find kss.
-    result = optimize.root_scalar(obj,bracket=[0.1,100],method='bisect')
+    for t in range(T):
+        W_now = int(W_now)  
+        C_backwards[t] = Cstar[W_now,t]  
+        W_now = W_now-C_backwards[t] 
     
-    return result
+    return C_backwards
